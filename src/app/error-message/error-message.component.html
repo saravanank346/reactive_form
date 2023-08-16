@@ -1,0 +1,11 @@
+<div class="!show-error">
+    <div class="error" *ngIf="data?.invalid && (data?.dirty || data?.touched)">
+        <div class="error-container" *ngIf="data?.error.required">
+            <span class="message">{{dataname}} is required.</span>
+        </div>
+        <div class="error-container" *ngIf="data?.error.pattern">
+            <span class="message">{{dataname}} is doesnot match pattern.</span>
+        </div>
+
+    </div>
+</div>

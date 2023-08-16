@@ -1,0 +1,175 @@
+<section>
+  <form [formGroup]="userform" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label>Name</label>
+      <input
+        type="text"
+        pInputText
+        placeholder="Enter Name"
+        formControlName="name"
+      />
+      <div
+        *ngIf="
+          userform.controls['name'].invalid &&
+          (userform.controls['name'].touched || userform.controls['name'].dirty)
+        "
+      >
+        <span *ngIf="userform.controls['name'].errors?.['required']"
+          >Name is Required</span
+        >
+        <!-- <span *ngIf="userform.controls['name'].errors?.['minlength']"
+          >Minium length 4</span
+        > -->
+        <span *ngIf="userform.controls['name'].errors?.['maxlength']"
+          >Maximum length Exced</span
+        >
+        <span *ngIf="userform.controls['name'].errors?.['pattern']"
+          >Invalid Name</span
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label>email</label>
+      <input
+        type="text"
+        pInputText
+        placeholder="Enter email"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          userform.controls['email'].invalid &&
+          (userform.controls['email'].touched ||
+            userform.controls['email'].dirty)
+        "
+      >
+        <span *ngIf="userform.controls['email'].errors?.['required']"
+          >Email is Required</span
+        >
+        <span *ngIf="userform.controls['email'].errors?.['pattern']"
+          >Invalid Email</span
+        >
+      </div>
+    </div>
+    <div class="form-group">
+      <label>phone</label>
+      <input
+        type="text"
+        pInputText
+        placeholder="Enter phone"
+        formControlName="phone"
+      />
+      <div
+        *ngIf="
+          userform.controls['phone'].invalid &&
+          (userform.controls['phone'].touched ||
+            userform.controls['phone'].dirty)
+        "
+      >
+        <span *ngIf="userform.controls['phone'].errors?.['required']"
+          >PhoneNumber is Required</span
+        >
+        <span *ngIf="userform.controls['phone'].errors?.['minlength']"
+          >Invalid Number
+        </span>
+        <span *ngIf="userform.controls['phone'].errors?.['maxlength']"
+          >max length reached
+        </span>
+        <span *ngIf="userform.controls['phone'].errors?.['pattern']"
+          >Invalid format
+        </span>
+      </div>
+    </div>
+
+    <!-- address -->
+    <!-- <div formArrayName="addresses">
+    <div *ngFor="let addressGroup of addressFormArray.controls; let i = index" class="mb-3">
+      <div [formGroup]="addressGroup">
+        <label for="doorNo">Door No:</label>
+        <input type="text" id="doorNo" formControlName="doorNo" class="form-control" required>
+
+        <label for="streetName">Street Name:</label>
+        <input type="text" id="streetName" formControlName="streetName" class="form-control" required>
+
+        <label for="district">District:</label>
+        <input type="text" id="district" formControlName="district" class="form-control" required> -->
+
+
+  <!-- add items -->
+  <div formArrayName="addDynamicElement" >
+    <div formGroupName="dynmaicformgroup"  >
+      <label for="doorNo">Door No:</label>
+        <input type="text" id="doorNo" formControlName="doorNo" class="form-control" required>
+
+        <label for="streetName">Street Name:</label>
+        <input type="text" id="streetName" formControlName="streetName" class="form-control" required>
+
+        <label for="district">District:</label>
+        <input type="text" id="district" formControlName="district" class="form-control" required> 
+
+      
+
+     
+    </div>
+    <div
+    *ngIf="
+      userform.controls['phone'].invalid &&
+      (userform.controls['phone'].touched ||
+        userform.controls['phone'].dirty)
+    "
+  >
+  <span *ngIf="userform.controls['phone'].errors?.['required']"
+      >skills is Required</span
+    >
+</div>
+  </div>
+  
+
+   <!-- jnkjkj -->
+   <!-- <div formArrayName="addDynamicElement">
+    <div *ngFor="let skill of addSkills().controls; let i=index">
+      <div [formGroupName]="i">
+        {{i}}
+        skill name :
+        <input type="text" formControlName="skill">
+        exp:
+        <input type="text" formControlName="exp">
+ 
+        
+      </div>
+    </div>
+  </div> -->
+
+    <!-- checkbox --> 
+    <!-- <div formArrayName="skillss">
+      <p-checkbox (onChange)="eventEmitter($event)" value="HTML" inputId="ny"></p-checkbox>
+      <label for="ny">HTML</label>
+      <p-checkbox  value="CSS" (onChange)="eventEmitter($event)" inputId="ny"></p-checkbox>
+      <label for="ny">CSS</label>
+    </div> -->
+
+    <!-- address -->
+ 
+
+
+    <button pButton pRipple label="Submit" class="p-button-success"></button>
+    <p-dialog
+      [(visible)]="visible"
+      [style]="{ width: '500px', height: '300px' }"
+    >
+      <h2>Are you sure ,want to submit this form</h2>
+      <div class="grid">
+        <p-button
+          label="submit"
+          (onClick)="submit_btn()"
+          styleClass="p-button-raised p-button-text"
+        ></p-button>
+        <p-button
+          label="cancel"
+          (onClick)="cancel_btn()"
+          styleClass="p-button-raised p-button-text p-button-secondary"
+        ></p-button>
+      </div>
+    </p-dialog>
+  </form>
+</section>
